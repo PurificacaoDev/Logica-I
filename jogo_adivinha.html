@@ -1,0 +1,88 @@
+	<meta charset="UTF-8">
+
+
+	<script>
+
+		function pulaLinha(){
+			document.write("<br>");
+			document.write("<br>");
+		}
+
+		function mostra(frase){
+			document.write(frase);
+			pulaLinha();
+		}
+		function random (max,min){
+
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor (Math.random() * (max - min) + min);
+			
+		}
+
+		function sorteio(max){
+
+			var min = 0;
+
+
+		 var chute = parseInt(prompt("Qual numero to pensando?"));
+
+		 var numeroPensado = random(max,min);
+
+		 if (chute == numeroPensado){
+
+			 mostra("Voce acertou, o numero foi " + numeroPensado);
+
+		 }else if (chute != numeroPensado){
+
+			 alert("Voce errou tente novamente");
+
+			 //sorteio();
+
+			 mostra("Voce errou, seu chute foi "+ chute + " e o numero pensando foi "+ numeroPensado);
+
+		 }
+		}
+
+		function dificuldade(){
+
+			var escolha = parseInt(prompt("Escolha a dificuldade: 1 - Facil / 2 - Dificil / 3 - Improvavel"));
+
+			if (escolha == 1){
+
+				var max = 10;
+				
+				return max;
+
+			}else if (escolha == 2){
+
+				var max = 100
+
+				return max;
+
+			} else if( escolha == 3){
+
+				var max = 1000
+
+				return max;
+
+			}else{
+
+				alert("Por favor escolha um valor entre 1 e 3");
+
+				dificuldade();
+			}
+
+
+
+		}
+
+
+		sorteio(dificuldade());
+
+
+
+
+
+
+	</script>

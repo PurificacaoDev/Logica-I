@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+<script>
+
+	function mutiplicacao(valor,y){
+		
+	   var n = valor;
+
+	   var tabuata = y;
+
+	   for (var tabuata = tabuata - 1; tabuata >= 0; tabuata--) {
+
+		 document.write(n + " vezes " + tabuata + " é igual a " + (n * tabuata) + "<br>");
+	    }
+
+	}
+	function soma(valor,y){
+		
+	   var n = 2;
+
+	   var tabuata = y;
+
+	   for (var tabuata = tabuata - 1; tabuata >= 0; tabuata--) {
+
+		 document.write(n + " mais " + tabuata + " é igual a " + (n + tabuata) + "<br>");
+	    }
+
+	}
+
+	
+	var valor = parseInt(prompt("Qual tabuata deseja?"));
+
+    document.write("<h1>Tabuata de Soma <br></h1>");
+
+	soma(valor,11);
+
+    document.write("<h1><br>Tabuata de Mutiplicação <br></h1>");
+
+	mutiplicacao(valor,11);
+
+	document.write("<h1><br>Tabuata de Subtração <br></h1>");
+
+	//subtracao(valor,11);
+
+    //var ano = prompt("Em qual ano estamos?");
+
+    //var nome = prompt("Qual seu nome?");
+
+	//document.write (" <br> " + nome + " sua idade é " + (ano - 1994) + " anos<br>");
+
+</script>
+

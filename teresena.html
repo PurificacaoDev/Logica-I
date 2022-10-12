@@ -1,0 +1,149 @@
+<meta charset="UTF-8">
+
+<input type = "text" id="jogo"/>
+<input type = "submit" value="Teresena - confira o resultado!" id="compare"/>
+<h1> Regras da Teresena</h1>
+<br>
+1. Digite 6 numeros de 1 a 60 sem repetir
+<br>
+2. Digite os numeros com espaço entre eles
+<br>
+3. So clique no botão caso tenha certeza da sua aposta
+<br>
+Boa sorte
+<br>
+
+<script>
+    // Função de sorteio numero aleatorios dentro de 0 a 60
+	function sorteia(){
+
+		return Math.round(Math.random()*60);
+	}
+    // Função verificar se os numeros são de fato aleatorios, sem repetir nenhum deles e sem ter o 0
+	function sorteiaNumeros(quantidade){
+
+		var segredos = [];
+
+		var numero = 1;
+
+		while(numero <= quantidade){
+
+			var confere = sorteia();
+
+			if(confere !== 0){
+			var achou = false;
+
+			for(var posicao = 0; posicao < segredos.length; posicao++){
+
+				if(segredos[posicao] == confere){
+					achou=true
+					break;
+				}
+
+			}
+		}
+			if(achou == false){
+			segredos.push(confere);
+			numero++;
+			}
+		}
+
+	    return segredos;	
+	}
+ 	//Função usada para verificar se o numero na posição X é igual ao numero que foi sortiado
+	function verifica(){
+
+		var achou = false;
+
+		for (posicao = 0; posicao < segredos.length; posicao++)
+
+			if(input.value == segredos[posicao]){
+
+				alert("Voce acertou");
+				achou = true;
+				break;
+			}
+
+		if (achou == false){
+
+			alert("Voce errou");
+		}
+
+		input.value = "";
+		input.focus();
+	}
+	// Função para verificar quais os numeros sorteiados
+	function resultado(){
+
+		document.write("<br><br>O resultado da Teresena é : ");
+
+		for (var cont = 0; cont < segredos.length;cont++){
+
+			document.write(segredos[cont] + " ");
+	 	}
+
+		document.write("<br><br>A sua aposta foi : ");
+
+		for (var cont = 0; cont < aposta.length;cont++){
+
+			document.write(aposta[cont] + ",");
+		}
+	}
+	// Função feita para verificar se os numeros digitados são iguais os gerados aleatoriamente -- Paramos aqui
+    function verificaJogo(){
+
+    	for(var contador = 0; contador <= segredos.lenght; contador++){
+
+    		if(aposta[contador] == segredos[contador]){
+
+    			document.write("Acertou");
+    			document.write("O resultado foi "+segredos[contador] + " ");
+    			document.write("<br>Sua aposta foi "+ guardaAposta[contador] + "");
+    			
+    		}else{
+
+    			document.write("Errou");
+    			document.write("O resultado foi "+ segredos[contador] + " ");
+    			document.write("<br>Sua aposta foi "+ guardaAposta.value[contador] + "");
+    		}
+    	}
+    }
+	// Aqui pegamos a aposta digitada la no input inicial
+    var aposta = [];
+    var guardaAposta = document.getElementById("jogo");
+    function apostaJogador (){
+
+    	aposta.push(guardaAposta.value);
+    	console.log(guardaAposta.value);
+    }
+
+    function conferido(){
+
+    	apostaJogador();
+    	verificaJogo();
+    }
+
+    // Aqui ja fazemos o sorteio dos 6 numeros da "Tele cena"
+	var segredos = sorteiaNumeros(6);
+
+	
+	var compare = document.getElementById("compare");
+	compare.onclick = conferido;
+
+
+
+
+
+	//document.write("<br><br>A sua aposta foi : ");
+
+	//for (var cont = 0; cont < aposta.length;cont++){
+
+	//	document.write(aposta[cont] + ",");
+	//}
+
+	
+
+
+
+
+</script>

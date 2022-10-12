@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+
+
+<script>
+
+	function pulaLinha(){
+		document.write("<br>");
+		document.write("<br>");
+	}
+
+	function mostra(frase){
+		document.write(frase);
+		pulaLinha();
+	}
+
+	mostra("<h1>Resultado da Tele Cena</h1>")
+
+	for(var linha = 1; linha <= 1; linha++){
+
+		for(var coluna = 1; coluna <= 6; coluna++){
+
+			var numero = Math.round(Math.random() * 60);
+
+			document.write(" (" + numero + ") ");
+		}
+		pulaLinha();
+	}
+
+</script>

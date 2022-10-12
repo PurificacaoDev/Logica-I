@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+
+
+<script>
+
+	function pulaLinha(){
+		document.write("<br>");
+		document.write("<br>");
+	}
+
+	function mostra(frase){
+		document.write(frase);
+		pulaLinha();
+	}
+
+	function mediaFamilia(numeroDePessoas){
+
+		var total = 0;
+
+		for(var contador = 0; contador < numeroDePessoas;contador++){
+
+			var nome = prompt("Insira o nome da pessoa ");
+
+			var idade = parseInt(prompt("Insira a idade de " + nome));
+
+			mostra("A idade de "+ nome +" é "+ idade);
+
+			total = idade + total;
+
+			if(numeroDePessoas == contador +1){
+
+				var media = total / numeroDePessoas;
+				mostra("A idade media do grupo dessa familia é " + media);
+
+			}
+		}
+
+	}
+    var numeroDePessoas = parseInt(prompt("Digite o tamanho do grupo familiar "));
+
+	mediaFamilia(numeroDePessoas);
+	
+
+
+
+</script>

@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+
+<input>
+<button>Adivinha qual o numero</button>
+
+<script>
+
+	var segredo = Math.round(Math.random()*10);
+	document.write(segredo)
+	var input = document.querySelector("input");
+	input.focus();
+
+	function verifica(){
+
+		if(input.value == segredo){
+
+			alert("Voce acertou");
+		}else{
+
+			alert("Voce errou");
+		}
+		input.value = "";
+		input.focus();
+	}
+	var button = document.querySelector("button");
+	button.onclick = verifica;
+
+</script>

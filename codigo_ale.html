@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+
+<input type = "text" id="chutes"/>
+<input type = "submit" value="Mega Sena - Digite 6 números de 1 a 60 e confira o resultado!" id="compare"/>
+
+<script>
+
+var pulalinha = function(){ 
+    document.write("<br>");
+}
+var mostra = function(frase){
+    document.write(frase);
+    pulalinha();
+};
+
+
+var numerosSorteados = [];
+var sorteio = function (){
+    for(var numeroDoComputador = 0 ; numeroDoComputador<6; numeroDoComputador++){
+        var sorteio = Math.round(Math.random()*60);
+        numerosSorteados.push(sorteio);
+        console.log(sorteio);
+    }
+};
+
+
+var guardaChutes = [];
+var CaixaDoNumero = document.getElementById("chutes");
+var Numerodousuario = function(){
+    guardaChutes.push(CaixaDoNumero.value);
+    console.log(CaixaDoNumero.value);        
+
+};
+
+var botao = document.getElementById("compare");
+
+botao.onclick = Numerodousuario;
+botao.onclick = sorteio;
+
+
+</script>
