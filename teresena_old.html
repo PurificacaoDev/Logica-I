@@ -1,0 +1,153 @@
+<meta charset="UTF-8">
+
+<script>
+    // Função de sorteio numero aleatorios dentro de 0 a 60
+	function sorteia(){
+
+		return Math.round(Math.random()*10);
+	}
+    // Função verificar se os numeros são de fato aleatorios, sem repetir nenhum deles e sem ter o 0
+	function sorteiaNumeros(quantidade){
+
+		var segredos = [];
+
+		var numero = 1;
+
+		while(numero <= quantidade){
+
+			var confere = sorteia();
+
+			if(confere !== 0){
+			var achou = false;
+
+			for(var posicao = 0; posicao < segredos.length; posicao++){
+
+				if(segredos[posicao] == confere){
+					achou=true
+					break;
+				}
+
+			}
+		}
+			if(achou == false){
+			segredos.push(confere);
+			numero++;
+			}
+		}
+
+	    return segredos;	
+	}
+	// Função feita para verificar se os numeros digitados são iguais os gerados aleatoriamente
+
+   function compare(quantidade, minimo, tipoDeJogo){ 
+
+    	var achou = 0;
+    	var contador = 0;
+
+    		while(contador < quantidade){
+
+       	 		for(var posicao = 0; posicao < numerosParaAdivinhar.length; posicao++){
+
+           			 if(aposta[contador] == numerosParaAdivinhar[posicao]){
+
+             	   achou = achou + 1;
+             	   document.write("Voce acertou o numero na posição "+ posicao);
+
+           		 }     
+             	  		 else{
+
+               	     		achou = achou;
+
+          	     	 }
+
+       		 }
+        		contador++;
+    	}
+    }
+    // define os números do sorteio, de acordo com o tipo de jogo e a quantidade para ser premiado.
+	function definaNumerosAdivinhar(base, quantidade){ 
+
+	    var numerosParaAdivinharF = [];
+	    var contador = 0;
+
+	    while(contador < quantidade){
+
+	        var baseDeDadosFF = definaBaseDeDados(base);
+	        var numeroAleatorio = baseDeDadosFF[sorteia(base)];
+	        var achou = false;
+
+	        for(var posicao = 0; posicao <= numerosParaAdivinharF.length; posicao++){
+
+	            if(numerosParaAdivinharF[posicao] == numeroAleatorio){
+
+	                achou = true;
+	                break;
+	            }
+	        }
+
+	        if(achou == false){
+
+	            numerosParaAdivinharF.push(numeroAleatorio);
+	            contador++
+	        }
+	    }
+	    return numerosParaAdivinharF;
+	}
+     // define os números que a pessoa irá apostar a depender do tipo de jogo.
+
+	function defineAposta(quantidade){
+
+    	var apostaF = [];
+    	var contador = 1;
+
+    	while(contador <= quantidade){
+
+        var achou = false;
+        var numeroAposta = parseInt(prompt("Indique o número " + contador + "º entre 1 a " + jogoDefinido + " da aposta."));
+
+        for(var posicao = 0; posicao < apostaF.length; posicao++){
+
+            if(apostaF[posicao] == numeroAposta){
+
+                achou = true;
+                break;
+
+            }
+        }
+
+        if(achou == false){
+
+            apostaF.push(numeroAposta);
+            contador++
+
+        	}
+    	}    
+
+
+    	return apostaF;
+    }
+
+
+    // Aqui ja fazemos o sorteio dos 6 numeros da "Tele cena"
+	var segredos = sorteiaNumeros(6);
+
+	var jogoDefinido = 0;
+	var precisaAdivinhar = 0;
+	var minimoParaGanhar = 0;
+	var tipoDeJogo = prompt("Em qual jogo você quer apostar, entre: 1 - mega-sena, 2 - lotofácil, 3 - quina, 4 - lotomania.");
+
+    if(tipoDeJogo == "mega-sena" || tipoDeJogo == 1){
+
+        jogoDefinido = 60;
+        precisaAdivinhar = 6;
+        minimoParaGanhar = 4;
+    }
+
+    var aposta = defineAposta(precisaAdivinhar);
+	console.log(aposta);
+	var correspondencia = compare(precisaAdivinhar, minimoParaGanhar, tipoDeJogo);
+	console.log(correspondencia);
+
+
+
+</script>

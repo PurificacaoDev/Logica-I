@@ -1,0 +1,157 @@
+<meta charset="UTF-8">
+
+<input type="button" onclick="premio(3);"
+        value="Pegue seu Premio" />
+
+<script>
+
+	function sorteia(baseDeDados){ 
+
+	    return Math.round(Math.random() * baseDeDados);
+
+	}
+	function definaBaseDeDados(quantidade){ // define o conjunto do qual se retirará os números do sorteio.
+	    var baseDeDadosF = [];
+	    var contador = 1;
+
+	    while(contador <= quantidade){
+
+	        baseDeDadosF.push(contador); 
+	        contador++
+	    }
+	    return baseDeDadosF;
+	}
+
+	function definaNumerosAdivinhar(base, quantidade){ // define os números do sorteio.
+
+	    var numerosParaAdivinharF = [];
+	    var contador = 0;
+
+	    while(contador < quantidade){
+
+	        var baseDeDadosFF = definaBaseDeDados(base);
+	        var numeroAleatorio = baseDeDadosFF[sorteia(base)];
+	        var achou = false;
+
+	        for(var posicao = 0; posicao <= numerosParaAdivinharF.length; posicao++){
+
+	            if(numerosParaAdivinharF[posicao] == numeroAleatorio){
+
+	                achou = true;
+	                break;
+	            }
+	        }
+
+	        if(achou == false){
+
+	            numerosParaAdivinharF.push(numeroAleatorio);
+	            contador++
+	        }
+	    }
+	    return numerosParaAdivinharF;
+	}
+
+	function defineAposta(quantidade){ // define os números que a pessoa irá apostar.
+
+	    var apostaF = [];
+	    var contador = 1;
+
+	    while(contador <= quantidade){
+
+	        var achou = false;
+	        var numeroAposta = parseInt(prompt("Indique o número " + contador + "º entre 1 a " + jogoDefinido + " da aposta."));
+
+	        for(var posicao = 0; posicao < apostaF.length; posicao++){
+
+	            if(apostaF[posicao] == numeroAposta){
+
+	                achou = true;
+	                break;
+
+	            }
+	        }
+
+	        if(achou == false){
+
+	            apostaF.push(numeroAposta);
+	            contador++
+
+	        }
+	    }    
+
+
+	    return apostaF;
+	}
+
+	function compare(quantidade, minimo, tipoDeJogo){ // para comparar o que foi apostado com os números do sorteio.
+
+	    var achou = 0;
+	    var contador = 0;
+
+	    while(contador < quantidade){
+
+	        for(var posicao = 0; posicao < numerosParaAdivinhar.length; posicao++){
+
+	            if(aposta[contador] == numerosParaAdivinhar[posicao]){
+
+	                achou = achou + 1;
+
+	                document.write("<br>Voce acertou o numero "+ aposta[contador]);
+
+	            }     
+	                else{
+
+	                    achou = achou;
+
+	                }
+
+	        }
+	        contador++;
+	    }
+
+
+	    if(achou == quantidade){
+
+	        alert("Você GANHOU a premiação TOTAL!"); 
+
+	    }
+
+	    if(achou >= minimo && achou < quantidade){
+
+	        alert("Você acertou " + achou + " números e foi premiado!");
+	             
+	    }    else{
+
+	                alert("Não foi dessa vez!");
+
+	            }    
+
+	    return achou;
+	}
+
+	function premio(n){
+
+		document.write("<br><a href='https://youtu.be/aBj7CyqmlnU'>Pegue seu premio</a>");
+		
+	}
+
+
+	//Programa inicia aqui
+	var jogoDefinido = 10;
+	var precisaAdivinhar = 6;
+	var minimoParaGanhar = 4;
+	var tipoDeJogo = 1;
+
+	var baseDeDados = definaBaseDeDados(jogoDefinido);
+	console.log(baseDeDados);
+
+	var numerosParaAdivinhar = definaNumerosAdivinhar(jogoDefinido, precisaAdivinhar);
+	console.log(numerosParaAdivinhar);
+
+	var aposta = defineAposta(precisaAdivinhar);
+	console.log(aposta);
+
+	var correspondencia = compare(precisaAdivinhar, minimoParaGanhar, tipoDeJogo);
+	console.log(correspondencia);
+
+</script>
